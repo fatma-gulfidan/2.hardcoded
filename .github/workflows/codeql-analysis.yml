@@ -1,0 +1,33 @@
+name: CodeQL Analysis
+
+on:
+  push:
+    branches: [ main ]  # main dalına push yapıldığında çalışır
+  pull_request:
+    # Herhangi bir PR açıldığında çalışır
+    branches: [ main ]
+  schedule:
+    # Haftalık otomatik tarama (her Pazartesi sabah 3'te)
+    - cron: '0 3 * * 1'
+
+jobs:
+  analyze:
+    name: Analyze Code
+    runs-on: ubuntu-latest
+
+    steps:
+      # Depoyu checkout et
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # CodeQL'i başlat
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: python  # Python kodunu tarar
+          # Eğer başka diller varsa, örneğin javascript eklemek için:
+          # languages: python, javascript
+
+      # CodeQL Analizini çalıştır
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2

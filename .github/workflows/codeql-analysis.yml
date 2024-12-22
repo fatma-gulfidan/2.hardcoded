@@ -27,3 +27,6 @@ jobs:
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
+
+permissions:
+  contents: read  # Sadece içerikleri okuma izni veriliyor

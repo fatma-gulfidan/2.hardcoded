@@ -1,2 +1,2 @@
-flask==1.0.2  # Eski sürüm
+flask==2.2.5  # Eski sürüm
 requests==2.22.0

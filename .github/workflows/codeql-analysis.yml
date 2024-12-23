@@ -1,29 +1,30 @@
-name: CodeQL Analysis
+name: "CodeQL Analysis"
 
 on:
   push:
     branches: [ main ]
   pull_request:
+    # Kendinize uygun dalları ekleyin
     branches: [ main ]
   schedule:
-    - cron: '0 3 * * 1'
-
-permissions:
-  contents: read
+    - cron: '0 0 * * 0'
 
 jobs:
   analyze:
-    name: Analyze Code
+    name: Analyze
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v2
-        with:
-          languages: python
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v2
+      with:
+        languages: python
 
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v2
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v2

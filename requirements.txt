@@ -1,0 +1,5 @@
+
+flask==2.2.5  # Eski sürüm
+requests==2.32.2
+
+
